@@ -37,27 +37,27 @@ Organizations frequently need realistic datasets for testing, development, analy
 
 ```
 ┌──────────────────────────────────────────────────────────┐
-│                     main.py (Pipeline Orchestrator)       │
-│                                                           │
+│               main.py (Pipeline Orchestrator)            │
+│                                                          │
 │  ┌─────────────┐    ┌─────────────┐    ┌──────────────┐  │
-│  │ DataLoader   │───▶│ DataProfiler│───▶│ Distribution │  │
-│  │ (download,   │    │ (types,     │    │ Learner      │  │
-│  │  preprocess) │    │  stats,     │    │ (μ, Σ,       │  │
+│  │ DataLoader  │--> │ DataProfiler│--> │ Distribution │  │
+│  │ (download,  │    │ (types,     │    │ Learner      │  │
+│  │  preprocess)│    │  stats,     │    │ (μ, Σ,       │  │
 │  └─────────────┘    │  corr)      │    │  P(cat))     │  │
-│                      └─────────────┘    └──────┬───────┘  │
-│                                                 │          │
+│                     └─────────────┘    └───────┬──────┘  │
+│                                                │         │
 │  ┌─────────────┐    ┌─────────────┐    ┌───────▼───────┐ │
-│  │ Visualizer   │◀──│ Validator   │◀───│ Synthetic     │ │
-│  │ (histograms, │    │ (KS test,  │    │ Generator     │ │
-│  │  heatmaps,   │    │  means,    │    │ (MVN sample,  │ │
-│  │  bar charts) │    │  Frobenius)│    │  cat choice)  │ │
+│  │ Visualizer  │ <--│ Validator   │ <--│ Synthetic     │ │
+│  │ (histograms,│    │ (KS test,   │    │ Generator     │ │
+│  │  heatmaps,  │    │  means,     │    │ (MVN sample,  │ │
+│  │  bar charts)│    │  Frobenius) │    │  cat choice)  │ │
 │  └─────────────┘    └─────────────┘    └───────┬───────┘ │
-│                                                 │          │
-│                                        ┌───────▼───────┐  │
-│                                        │ PrivacyGuard  │  │
-│                                        │ (dedup,       │  │
-│                                        │  similarity)  │  │
-│                                        └───────────────┘  │
+│                                                │         │
+│                                        ┌───────▼───────┐ │
+│                                        │ PrivacyGuard  │ │
+│                                        │ (dedup,       │ │
+│                                        │  similarity)  │ │
+│                                        └───────────────┘ │
 └──────────────────────────────────────────────────────────┘
 ```
 
