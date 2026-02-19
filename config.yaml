@@ -1,0 +1,53 @@
+# SynthGen AI Configuration
+# =========================================================
+
+# Random seed for reproducibility
+random_seed: 42
+
+# Dataset settings
+dataset:
+  download_url: "https://archive.ics.uci.edu/ml/machine-learning-databases/adult/adult.data"
+  column_names:
+    - age
+    - workclass
+    - fnlwgt
+    - education
+    - education_num
+    - marital_status
+    - occupation
+    - relationship
+    - race
+    - sex
+    - capital_gain
+    - capital_loss
+    - hours_per_week
+    - native_country
+    - income
+  raw_path: "data/raw/adult_census.csv"
+  processed_path: "data/processed/adult_census_processed.csv"
+
+# Synthetic data settings
+synthetic:
+  output_path: "data/synthetic/synthetic_data.csv"
+  num_rows: 0  # 0 = match original dataset size
+
+# Privacy settings
+# similarity_threshold: min standardized Euclidean distance below which
+# a synthetic row is considered too similar to an original row
+privacy:
+  similarity_threshold: 0.05
+  max_regeneration_attempts: 5
+  batch_size: 1000
+
+# Missing value handling: "impute" or "drop"
+missing_values:
+  strategy: "impute"
+
+# Validation & reporting
+reports:
+  output_dir: "reports"
+  validation_report: "reports/validation_report.json"
+
+# Logging
+logging:
+  level: "INFO"
